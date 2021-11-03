@@ -5,38 +5,38 @@ import * as vscode from 'vscode';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
+    
+    // Use the console to output diagnostic information (console.log) and errors (console.error)
+    // This line of code will only be executed once when your extension is activated
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('open-css-module.openCssModule', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
+    // The command has been defined in the package.json file
+    // Now provide the implementation of the command with registerCommand
+    // The commandId parameter must match the command field in package.json
+    let disposable = vscode.commands.registerCommand('open-css-module.openCssModule', () => {
+        // The code you place here will be executed every time your command is executed
+        // Display a message box to the user
         const cssModulePath = getCssModulePath();
-		if(cssModulePath === null) return;
+        if(cssModulePath === null) return;
         vscode.window.showInformationMessage(`opening... ${cssModulePath}`);
         openFileInVscode(cssModulePath)
-	});
+    });
 
-	let disposableBeside = vscode.commands.registerCommand('open-css-module.openCssModuleBeside', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
+    let disposableBeside = vscode.commands.registerCommand('open-css-module.openCssModuleBeside', () => {
+        // The code you place here will be executed every time your command is executed
+        // Display a message box to the user
         const cssModulePath = getCssModulePath();
-		if(cssModulePath === null) return;
+        if(cssModulePath === null) return;
         vscode.window.showInformationMessage(`opening... ${cssModulePath}`);
         openFileInVscodeBeside(cssModulePath)
-	});
+    });
 
-	context.subscriptions.push(disposable);
+    context.subscriptions.push(disposable);
 }
 
 function openFileInVscode(filePath: string) {
     const relativePath = '../' + filePath
     const currentlyOpenTabfileUri = getActiveEditor()?.document.uri;
-	if(currentlyOpenTabfileUri === undefined) return;
+    if(currentlyOpenTabfileUri === undefined) return;
     const openPath = vscode.Uri.joinPath(currentlyOpenTabfileUri,relativePath)
     vscode.workspace.openTextDocument(openPath).then(doc => {
         vscode.window.showTextDocument(doc);
@@ -46,7 +46,7 @@ function openFileInVscode(filePath: string) {
 function openFileInVscodeBeside(filePath: string) {
     const relativePath = '../' + filePath
     const currentlyOpenTabfileUri = getActiveEditor()?.document.uri;
-	if(currentlyOpenTabfileUri === undefined) return;
+    if(currentlyOpenTabfileUri === undefined) return;
     const openPath = vscode.Uri.joinPath(currentlyOpenTabfileUri,relativePath)
     vscode.workspace.openTextDocument(openPath).then(doc => {
         vscode.window.showTextDocument(doc,{viewColumn: vscode.ViewColumn.Beside});
