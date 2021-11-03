@@ -8,7 +8,6 @@ export function activate(context: vscode.ExtensionContext) {
 	
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "open-css-module" is now active!');
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
@@ -66,11 +65,11 @@ function getActiveEditor(): vscode.TextEditor | null {
 
 
 function getCssModulePath(): string | null {
-	// アクティブエディタの取得 =========================================================
-	const editor = getActiveEditor();
-	if (editor === null) return null;
+    // アクティブエディタの取得 =========================================================
+    const editor = getActiveEditor();
+    if (editor === null) return null;
 
-	// エディタ内の情報取得 ============================================================
+    // エディタ内の情報取得 ============================================================
     const doc = editor.document;
     const text = doc.getText();
     const pattern = 'import +styles +from +[\'\"](.+\.module\.(css|scss))[\'\"]';
