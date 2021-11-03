@@ -4,6 +4,7 @@
 	"description": "Open css module associated with current file",
 	"version": "0.0.1",
 	"publisher": "yasan",
+	"repository": "github:nasubikun/open-css-module",
 	"engines": {
 		"vscode": "^1.61.0"
 	},
