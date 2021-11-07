@@ -58,7 +58,7 @@ function createAndOpenCssModuleWithoutImport(stylesDirectory: string, beside: bo
 
 
 function createAndOpenCssModuleWithImport(importFilePath:string, beside: boolean){
-    vscode.window.showInformationMessage(`creating... ${cssModuleFilePath}`);
+    vscode.window.showInformationMessage(`creating... ${importFilePath}`);
     return createAndOpenFile(importFilePath, beside);
 }
 
