@@ -39,8 +39,6 @@ function handleCssModuleOpen(beside: boolean){
     var cssModulePath = getCssModulePath();
     // const importSentenceExists = cssModulePath?true:false;
     const cssModuleFileExists = checkCssModuleFileExists(cssModulePath);
-    vscode.window.showInformationMessage(`opening... ${cssModulePath}`);
-    vscode.window.showInformationMessage(`${config}`);
     if (cssModulePath && !cssModuleFileExists){
         createAndOpenCssModuleWithImport(cssModulePath, beside)
     }else if(!cssModulePath && !cssModuleFileExists){
@@ -60,6 +58,7 @@ function createAndOpenCssModuleWithoutImport(stylesDirectory: string, beside: bo
 
 
 function createAndOpenCssModuleWithImport(importFilePath:string, beside: boolean){
+    vscode.window.showInformationMessage(`creating... ${cssModuleFilePath}`);
     return createAndOpenFile(importFilePath, beside);
 }
 
@@ -78,14 +77,15 @@ function createAndOpenFile(filePath: string, beside: boolean){
 function openFileInVscode(filePath: string, beside: boolean) {
     // open css module file and return if it did
     
-    const openPath = vscode.Uri.file(filePath)
+    const openUri = vscode.Uri.file(filePath)
+    vscode.window.showInformationMessage(`opening... ${filePath}`);
 
     if (beside){
-        vscode.workspace.openTextDocument(openPath).then(doc => {
+        vscode.workspace.openTextDocument(openUri).then(doc => {
             vscode.window.showTextDocument(doc,{viewColumn: vscode.ViewColumn.Beside});
         });
     }
-        vscode.workspace.openTextDocument(openPath).then(doc => {
+        vscode.workspace.openTextDocument(openUri).then(doc => {
             vscode.window.showTextDocument(doc);
     });
     return true
@@ -112,6 +112,7 @@ function insertToTop(sentence: string){
     let f = function(editBuilder: vscode.TextEditorEdit): void{
         editBuilder.insert(new vscode.Position(0,0), sentence);
     }
+    vscode.window.showInformationMessage(`insert ${sentence} at (0,0)`);
     activeTextEditor?.edit(f)
 }
 

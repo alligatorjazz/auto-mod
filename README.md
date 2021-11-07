@@ -20,6 +20,10 @@ Set the **Styles Directory** as the directory where the files should be created.
 
 ## Updates
 
+### 0.0.3
+
+- fix message
+
 ### 0.0.2
 
 - add autoCreate method
@@ -28,6 +32,6 @@ Set the **Styles Directory** as the directory where the files should be created.
 
 ### 0.0.1
 
-First Release
+- First Release
 
 -----------------------------------------------------------------------------------------------------------
