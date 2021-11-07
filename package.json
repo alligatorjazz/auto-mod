@@ -2,7 +2,7 @@
 	"name": "open-css-module",
 	"displayName": "open-css-module",
 	"description": "Open css module associated with current file",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"publisher": "yasan",
 	"repository": "github:nasubikun/open-css-module",
 	"engines": {
