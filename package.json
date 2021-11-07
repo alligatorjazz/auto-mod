@@ -2,7 +2,7 @@
 	"name": "open-css-module",
 	"displayName": "open-css-module",
 	"description": "Open css module associated with current file",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "yasan",
 	"repository": "github:nasubikun/open-css-module",
 	"engines": {
@@ -26,7 +26,22 @@
 				"command": "open-css-module.openCssModuleBeside",
 				"title": "Open Css Module File (Beside)"
 			}
-		]
+		],
+		"configuration":{
+			"title": "openCssModule",
+			"properties": {
+				"openCssModule.autoCreate": {
+					"type": "boolean",
+					"default": true,
+					"description": "If there is no module css, create new one."
+				},
+				"openCssModule.stylesDirectory": {
+					"type": "string",
+					"default": "../styles/",
+					"description": "If you enable autoCreate, module css file will be created in it. The path should be configured as from where components exist. (e.g. ../styles/ ./styles/)"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
