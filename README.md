@@ -20,6 +20,10 @@ Set the **Styles Directory** as the directory where the files should be created.
 
 ## Updates
 
+### 0.0.4
+
+- fix import sentence when Styles Directory is set to './' or '.'
+
 ### 0.0.3
 
 - fix message

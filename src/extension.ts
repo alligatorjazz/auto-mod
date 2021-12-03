@@ -49,8 +49,11 @@ function handleCssModuleOpen(beside: boolean){
 
 function createAndOpenCssModuleWithoutImport(stylesDirectory: string, beside: boolean){
     const path = require('path');
-    const relativePath = path.join(stylesDirectory,getModuleName())+'.module.css'
+    var relativePath = path.join(stylesDirectory,getModuleName())+'.module.css'
     const cssModuleFilePath = relativePath2AbsolutePath(relativePath);
+    if(stylesDirectory=='./'||stylesDirectory=='.'){
+        relativePath = './' + relativePath
+    }
     insertToTop(generateImportSentence(relativePath))
     createAndOpenFile(cssModuleFilePath, beside);
     return cssModuleFilePath
@@ -112,7 +115,7 @@ function insertToTop(sentence: string){
     let f = function(editBuilder: vscode.TextEditorEdit): void{
         editBuilder.insert(new vscode.Position(0,0), sentence);
     }
-    vscode.window.showInformationMessage(`insert ${sentence} at (0,0)`);
+    vscode.window.showInformationMessage(`insert: "${sentence}" at (0,0)`);
     activeTextEditor?.edit(f)
 }
 
