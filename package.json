@@ -1,41 +1,33 @@
 {
-	"name": "open-css-module",
-	"displayName": "open-css-module",
+	"name": "auto-mod",
+	"displayName": "auto-mod",
 	"description": "Open css module associated with current file",
-	"version": "0.0.4",
-	"publisher": "yasan",
-	"repository": "github:nasubikun/open-css-module",
+	"version": "0.0.0",
+	"publisher": "alligatorjazz",
+	"repository": "github:alligatorjazz/auto-mod",
 	"engines": {
 		"vscode": "^1.61.0"
 	},
 	"categories": [
 		"Other"
 	],
-	"activationEvents": [
-		"onCommand:open-css-module.openCssModule",
-		"onCommand:open-css-module.openCssModuleBeside"
-	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "open-css-module.openCssModule",
-				"title": "Open Css Module File"
-			},
-			{
-				"command": "open-css-module.openCssModuleBeside",
-				"title": "Open Css Module File (Beside)"
+				"command": "auto-mod.createStyleModuleHere",
+				"title": "Create Style Module Here"
 			}
 		],
-		"configuration":{
-			"title": "openCssModule",
+		"configuration": {
+			"title": "auto-mod",
 			"properties": {
-				"openCssModule.autoCreate": {
+				"auto-mod.autoCreate": {
 					"type": "boolean",
 					"default": true,
 					"description": "If there is no module css, create new one."
 				},
-				"openCssModule.stylesDirectory": {
+				"auto-mod.stylesDirectory": {
 					"type": "string",
 					"default": "../styles/",
 					"description": "If you enable autoCreate, module css file will be created in it. The path should be configured as from where components exist. (e.g. ../styles/ ./styles/)"
@@ -52,16 +44,17 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.61.0",
 		"@types/glob": "^7.1.4",
 		"@types/mocha": "^9.0.0",
 		"@types/node": "14.x",
-		"@typescript-eslint/eslint-plugin": "^5.1.0",
-		"@typescript-eslint/parser": "^5.1.0",
+		"@types/vscode": "^1.61.0",
+		"@typescript-eslint/eslint-plugin": "^5.60.0",
+		"@typescript-eslint/parser": "^5.60.0",
+		"@vscode/test-electron": "^1.6.2",
 		"eslint": "^8.1.0",
+		"eslint-plugin-react": "^7.32.2",
 		"glob": "^7.1.7",
 		"mocha": "^9.1.3",
-		"typescript": "^4.4.4",
-		"@vscode/test-electron": "^1.6.2"
+		"typescript": "^4.4.4"
 	}
 }
