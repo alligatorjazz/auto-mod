@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { createAndOpenStyleModule } from "./files";
 
 
 export function createStyleModuleAt() {
@@ -6,7 +7,7 @@ export function createStyleModuleAt() {
 }
 
 export function createStyleModuleHere() {
-	vscode.window.showInformationMessage("Unimplemented");
+	createAndOpenStyleModule("css", ".");
 }
 
 
