@@ -33,7 +33,7 @@ async function createFile(filePath: string) {
 	wsedit.createFile(fileUri, { ignoreIfExists: true });
 
 	await vscode.workspace.applyEdit(wsedit);
-	vscode.window.showInformationMessage(`auto-modCreated new style module at ${filePath}`);
+	vscode.window.showInformationMessage(`auto-mod: Created new style module at ${filePath}`);
 	return filePath;
 }
 

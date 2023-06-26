@@ -2,7 +2,7 @@
 	"name": "auto-mod",
 	"displayName": "auto-mod",
 	"description": "Open css module associated with current file",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"publisher": "alligatorjazz",
 	"repository": "github:alligatorjazz/auto-mod",
 	"engines": {
