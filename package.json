@@ -17,6 +17,10 @@
 			{
 				"command": "auto-mod.createStyleModuleHere",
 				"title": "Create Style Module Here"
+			},
+			{
+				"command": "auto-mod.createStyleModuleInStylesFolder",
+				"title": "Create Style Module in Styles Folder"	
 			}
 		],
 		"configuration": {
@@ -24,7 +28,7 @@
 			"properties": {
 				"auto-mod.stylesDirectory": {
 					"type": "string",
-					"default": "../styles/",
+					"default": ".",
 					"description": "The directory that auto-mod will use for the \"> Create Style Module in Styles Directory\" command."
 				},
 				"auto-mod.language": {

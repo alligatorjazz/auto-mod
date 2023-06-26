@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import { createStyleModuleHere } from "./commands";
+import { createStyleModuleHere, createStyleModuleInStylesFolder } from "./commands";
 // import * as fs from 'fs'
 
 // this method is called when your extension is activated
@@ -35,8 +35,12 @@ export function activate(context: vscode.ExtensionContext) {
 	const commands: vscode.Disposable[] = [
 		vscode.commands.registerCommand("auto-mod.createStyleModuleHere", () => {
 			createStyleModuleHere();
-		})
+		}),
+		vscode.commands.registerCommand("auto-mod.createStyleModuleInStylesFolder", () => {
+			createStyleModuleInStylesFolder();
+		}),
 	];
+	
 	commands.map(command => { context.subscriptions.push(command); });
 }
 

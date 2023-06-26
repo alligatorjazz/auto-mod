@@ -3,22 +3,27 @@ import { StyleLang, config, createAndOpenStyleModule } from "./files";
 
 
 
-export function createStyleModuleAt() {
-	vscode.window.showInformationMessage("Unimplemented");
+export function createStyleModuleInStylesFolder() {
+	const lang: StyleLang | undefined = config.get("language");
+	if (!lang) {
+		throw new Error("auto-mod: Configuration error - language option invalid.");
+	}
+	const stylesDirectory = config.get("stylesDirectory");
+	createAndOpenStyleModule(lang, stylesDirectory as string);
 }
 
 export function createStyleModuleHere() {
 	const lang: StyleLang | undefined = config.get("language");
-
+	
 	if (!lang) {
-		throw new Error("Configuration error - language option invalid.");
+		throw new Error("auto-mod: Configuration error - language option invalid.");
 	}
 
 	createAndOpenStyleModule(lang, ".");
 }
 
 
-export function changeModuleType() {
+export function changeModuleLanguage() {
 	vscode.window.showInformationMessage("Unimplemented");
 }
 

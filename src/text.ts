@@ -5,6 +5,9 @@ import * as vscode from "vscode";
 export function relativePathToAbsolutePath(filePath: string): string {
 	const relativePath = "../" + filePath;
 	const currentlyOpenTabfilePath = getActiveEditor()?.document.uri?.fsPath;
+	
+	console.log(path.join(currentlyOpenTabfilePath ?? ".", relativePath));
+	
 	return path.join(currentlyOpenTabfilePath ?? ".", relativePath);
 }
 
