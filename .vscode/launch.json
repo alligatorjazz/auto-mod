@@ -5,11 +5,13 @@
 {
 	"version": "0.2.0",
 	"configurations": [
+		
 		{
 			"name": "Run Extension",
 			"type": "extensionHost",
 			"request": "launch",
 			"args": [
+				"${workspaceFolder}/src/test/workspace/auto-mod-test.code-workspace",
 				"--extensionDevelopmentPath=${workspaceFolder}"
 			],
 			"outFiles": [
@@ -22,7 +24,9 @@
 			"type": "extensionHost",
 			"request": "launch",
 			"args": [
+				"${workspaceFolder}/src/test/workspace/auto-mod-test.code-workspace",
 				"--extensionDevelopmentPath=${workspaceFolder}",
+				// "--extensionDevelopmentPath=${workspaceFolder}/src/test/.temp",
 				"--extensionTestsPath=${workspaceFolder}/out/test/suite/index"
 			],
 			"outFiles": [
