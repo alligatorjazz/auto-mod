@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
-import { createAndOpenStyleModule } from "./files";
+import { StyleLang, config, createAndOpenStyleModule } from "./files";
+
 
 
 export function createStyleModuleAt() {
@@ -7,7 +8,13 @@ export function createStyleModuleAt() {
 }
 
 export function createStyleModuleHere() {
-	createAndOpenStyleModule("css", ".");
+	const lang: StyleLang | undefined = config.get("language");
+
+	if (!lang) {
+		throw new Error("Configuration error - language option invalid.");
+	}
+
+	createAndOpenStyleModule(lang, ".");
 }
 
 

@@ -1,5 +1,5 @@
 import * as path from "path";
-import { getActiveEditor } from "./files";
+import { config, getActiveEditor } from "./files";
 import * as vscode from "vscode";
 
 export function relativePathToAbsolutePath(filePath: string): string {
@@ -13,7 +13,9 @@ export function insertToTop(sentence: string) {
 	const f = function (editBuilder: vscode.TextEditorEdit): void {
 		editBuilder.insert(new vscode.Position(0, 0), sentence);
 	};
-	vscode.window.showInformationMessage(`insert: "${sentence}" at (0,0)`);
+
+	if (activeTextEditor)
+		vscode.window.showInformationMessage(`Added ${config.get("language")} import to ${path.parse(activeTextEditor.document.fileName).base}.`);
 	activeTextEditor?.edit(f);
 }
 

@@ -3,7 +3,11 @@ import * as path from "path";
 import * as vscode from "vscode";
 import { generateImportSentence, getModuleName, getStyleModulePath, insertToTop, relativePathToAbsolutePath } from "./text";
 
-export type StyleLang = "css" | "scss" | "sass" | "less";
+
+
+export const config = vscode.workspace.getConfiguration("auto-mod");
+
+export type StyleLang = ".css" | ".scss" | ".sass" | ".less";
 export function getActiveEditor(): vscode.TextEditor | null {
 	const editor = vscode.window.activeTextEditor;
 	if (!editor) {
@@ -16,7 +20,6 @@ export function openFileInVscode(filePath: string) {
 	// open css module file and return if it did
 
 	const openUri = vscode.Uri.file(filePath);
-	vscode.window.showInformationMessage(`Opening... ${filePath}`);
 
 	vscode.workspace.openTextDocument(openUri).then(doc => {
 		vscode.window.showTextDocument(doc);
@@ -24,38 +27,44 @@ export function openFileInVscode(filePath: string) {
 	return true;
 }
 
-function createAndOpenFile(filePath: string) {
+async function createFile(filePath: string) {
 	const wsedit = new vscode.WorkspaceEdit();
 	const fileUri = vscode.Uri.file(filePath);
 	wsedit.createFile(fileUri, { ignoreIfExists: true });
-	vscode.workspace.applyEdit(wsedit).then(() => {
-		openFileInVscode(filePath);
-	});
+
+	await vscode.workspace.applyEdit(wsedit);
+	vscode.window.showInformationMessage(`auto-modCreated new style module at ${filePath}`);
 	return filePath;
 }
 
+
 export function createAndOpenStyleModule(lang: StyleLang, stylesDirectory: string) {
-	let relativePath = path.join(stylesDirectory, getModuleName()) + ".module." + lang;
+	let relativePath = path.join(stylesDirectory, getModuleName()) + ".module" + lang;
 	const styleModuleFilePath = relativePathToAbsolutePath(relativePath);
 
 	if (stylesDirectory == "./" || stylesDirectory == ".") {
 		relativePath = "./" + relativePath;
 	}
 
-	const fileAlreadyExists = checkStyleModuleExists(styleModuleFilePath);
+	const fileAlreadyExists = existsSync(styleModuleFilePath);
+
+	if (!fileAlreadyExists) {
+		createFile(styleModuleFilePath).then(() => {
+			if (config.get("switchActiveWindow") === true) {
+				openFileInVscode(styleModuleFilePath);
+			}
+		});	
+		
+	} else {
+		vscode.window.showInformationMessage(`auto-mod: File already exists at: ${styleModuleFilePath}`);
+		if (config.get("switchActiveWindow") === true) {
+			openFileInVscode(styleModuleFilePath);
+		}
+	}
+
 	if (getActiveEditor() && !getStyleModulePath()) {
 		insertToTop(generateImportSentence(relativePath));
 	}
 
-	if (!fileAlreadyExists) {
-		createAndOpenFile(styleModuleFilePath);
-	}
-
 	return styleModuleFilePath;
-}
-
-
-export function checkStyleModuleExists(filePath: string | null) {
-	if (filePath === null) return false;
-	return existsSync(filePath);
 }

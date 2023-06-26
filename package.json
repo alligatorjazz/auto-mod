@@ -22,15 +22,21 @@
 		"configuration": {
 			"title": "auto-mod",
 			"properties": {
-				"auto-mod.autoCreate": {
-					"type": "boolean",
-					"default": true,
-					"description": "If there is no module css, create new one."
-				},
 				"auto-mod.stylesDirectory": {
 					"type": "string",
 					"default": "../styles/",
-					"description": "If you enable autoCreate, module css file will be created in it. The path should be configured as from where components exist. (e.g. ../styles/ ./styles/)"
+					"description": "The directory that auto-mod will use for the \"> Create Style Module in Styles Directory\" command."
+				},
+				"auto-mod.language": {
+					"type": "string",
+					"enum": [".css", ".scss", ".sass", ".less"],
+					"default": ".css",
+					"description": "The language will auto-mod create style modules in."
+				},
+				"auto-mod.switchActiveWindow": {
+					"type": "boolean",
+					"default": true,
+					"description": "Whether auto-mod will switch your active window to the style module once it is created."
 				}
 			}
 		}
