@@ -1,41 +1,21 @@
-## Features
+# auto-mod
+Automatically creates and imports CSS (or preprocessor) modules for React components.
 
-While editing a JSX or TSX file, you can open the corresponding css module file.
-
-![openCssModuleDemo](imgs/openCssModuleDemo.gif)
+A heavily modified fork of: https://github.com/Nasubikun/open-css-module
 
 ## Usage
+Open the React component you want to make a module for, and then select one of auto-mod's commands from the VSCode command palette.
 
-After install this extension, just open the command palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>) and choose `open css module` or `open css module (Beside)`.
+### Commands
+- **Create Style Module Here**: Creates and imports a style module in the same folder as the currently component.
+- **Create Style Module in Styles Folder**: Creates and imports style module in a predefined folder set in user / workspace settings.
 
-## Setting
+### Config
+- `stylesDirectory`: The directory that **Create Style Module in Styles Folder** will use to create modules.
+- `language`: The language for the style modules created by auto-mod. CSS is set by default.
+- `switchActiveWindow`: If enabled, will switch the VSCode editor window to the newly created style module.
 
-Open setting (<kbd>Ctrl</kbd> + <kbd>,</kbd>) and open `OpenCssModule` tab.
-You can enable **Auto Create** function.
+## Future To-Dos (v1)
+- Add tests.
+- Automatically generate CSS module classes as they are referenced in React component `style` attributes.
 
-![autoCreate](imgs/autoCreate.png)
-
-Auto Create allows create new files when there are no css modules.
-Set the **Styles Directory** as the directory where the files should be created.
-
-## Updates
-
-### 0.0.4
-
-- fix import sentence when Styles Directory is set to './' or '.'
-
-### 0.0.3
-
-- fix message
-
-### 0.0.2
-
-- add autoCreate method
-- refactor code
-
-
-### 0.0.1
-
-- First Release
-
------------------------------------------------------------------------------------------------------------
