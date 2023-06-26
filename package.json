@@ -8,10 +8,10 @@
 	"engines": {
 		"vscode": "^1.61.0"
 	},
+	"license": "MIT",
 	"categories": [
 		"Other"
 	],
-	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
