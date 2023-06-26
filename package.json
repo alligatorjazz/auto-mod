@@ -3,7 +3,7 @@
 	"displayName": "Auto Mod",
 	"description": "Create CSS (and preprocessor) modules for your React components quickly",
 	"version": "0.1.0",
-	"publisher": "alligatorjazz",
+	"publisher": "FalchionStudios",
 	"repository": "github:alligatorjazz/auto-mod",
 	"engines": {
 		"vscode": "^1.61.0"
